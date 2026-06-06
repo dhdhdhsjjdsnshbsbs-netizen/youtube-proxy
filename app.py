@@ -42,9 +42,9 @@ def buscar(termo):
             resultado = ydl.extract_info(f'ytsearch5:{termo}', download=False)
             musicas = []
             for entry in resultado['entries']:
-                duracao = entry.get('duration', 0)
-                min = duracao // 60
-                seg = duracao % 60
+            duracao = int(entry.get('duration', 0) or 0)
+            min = duracao // 60
+            seg = duracao % 60
                 musicas.append({
                     'titulo': entry.get('title', 'Sem titulo'),
                     'id': entry.get('id', ''),
